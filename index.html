@@ -9,12 +9,15 @@
 <body>
 
 <div class="container">
-    <h2>Absensi Sekolah QR Code</h2>
+    <h2>Absensi Sekolah QR</h2>
 
+    <!-- QR Scanner Area -->
     <div id="reader"></div>
 
+    <!-- Tombol Manual -->
     <button id="manualBtn" class="btn-manual">Isi Manual</button>
 
+    <!-- Form Absensi -->
     <form id="absenForm">
         <label>NIS</label>
         <input type="text" id="nis">
@@ -32,9 +35,9 @@
             <option value="Sakit">🔴 Sakit</option>
         </select>
 
-        <div id="keteranganBox" style="display: none;">
+        <div id="keteranganBox" style="display:none;">
             <label>Keterangan (Opsional)</label>
-            <textarea id="keterangan" placeholder="Masukkan alasan izin atau sakit"></textarea>
+            <textarea id="keterangan" placeholder="Masukkan alasan izin/sakit"></textarea>
         </div>
 
         <button type="button" id="kirimWA">Kirim Absen</button>
