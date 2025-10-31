@@ -13,15 +13,17 @@
 
     <div id="reader"></div>
 
+    <button id="manualBtn" class="btn-manual">Isi Manual</button>
+
     <form id="absenForm">
-        <label>NIS Hasil Scan</label>
-        <input type="text" id="nis" readonly>
+        <label>NIS</label>
+        <input type="text" id="nis">
 
         <label>Nama</label>
-        <input type="text" id="nama" readonly>
+        <input type="text" id="nama">
 
         <label>Kelas</label>
-        <input type="text" id="kelas" readonly>
+        <input type="text" id="kelas">
 
         <label>Status</label>
         <select id="status">
@@ -32,7 +34,7 @@
 
         <div id="keteranganBox" style="display: none;">
             <label>Keterangan (Opsional)</label>
-            <textarea id="keterangan" placeholder="Masukkan alasan izin/sakit"></textarea>
+            <textarea id="keterangan" placeholder="Masukkan alasan izin atau sakit"></textarea>
         </div>
 
         <button type="button" id="kirimWA">Kirim Absen</button>
