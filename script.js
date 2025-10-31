@@ -5,54 +5,78 @@ const dataSiswa = {
     "11223": { nama: "Rudi Hartono", kelas: "7C" }
 };
 
-// TAMPILKAN KETERANGAN Izin/Sakit
+// Tampilkan kolom keterangan ketika Izin / Sakit
 document.getElementById("status").addEventListener("change", function () {
-    const val = this.value;
-    const box = document.getElementById("keteranganBox");
-    box.style.display = (val === "Hadir") ? "none" : "block";
+    document.getElementById("keteranganBox").style.display =
+        (this.value === "Hadir") ? "none" : "block";
 });
 
-// QR SCANNER (html5-qrcode)
+// =========================
+//        QR SCANNER
+// =========================
 const scanner = new Html5Qrcode("reader");
+let scannerAktif = true;
 
-Html5Qrcode.getCameras().then(cameras => {
-    if (cameras.length > 0) {
-        scanner.start(
-            cameras[0].id,
-            { fps: 10, qrbox: 200 },
-            hasil => {
-                document.getElementById("nis").value = hasil;
+function mulaiScanner() {
+    Html5Qrcode.getCameras().then(cameras => {
+        if (cameras.length > 0) {
+            scanner.start(
+                cameras[0].id,
+                { fps: 10, qrbox: 200 },
+                hasil => {
+                    document.getElementById("nis").value = hasil;
 
-                if (dataSiswa[hasil]) {
-                    document.getElementById("nama").value = dataSiswa[hasil].nama;
-                    document.getElementById("kelas").value = dataSiswa[hasil].kelas;
-                } else {
-                    document.getElementById("nama").value = "Tidak ditemukan";
-                    document.getElementById("kelas").value = "-";
-                }
+                    if (dataSiswa[hasil]) {
+                        document.getElementById("nama").value = dataSiswa[hasil].nama;
+                        document.getElementById("kelas").value = dataSiswa[hasil].kelas;
+                    } else {
+                        document.getElementById("nama").value = "";
+                        document.getElementById("kelas").value = "";
+                    }
 
-                scanner.stop();
-            },
-            err => {}
-        );
+                    scanner.stop();
+                    scannerAktif = false;
+                },
+                err => {}
+            );
+        }
+    });
+}
+
+mulaiScanner();
+
+// =========================
+//       MODE INPUT MANUAL
+// =========================
+document.getElementById("manualBtn").addEventListener("click", () => {
+    if (scannerAktif) {
+        scanner.stop();
     }
+    scannerAktif = false;
+
+    alert("Mode Isi Manual diaktifkan!");
+
+    document.getElementById("nis").removeAttribute("readonly");
+    document.getElementById("nama").removeAttribute("readonly");
+    document.getElementById("kelas").removeAttribute("readonly");
 });
 
-
-// KIRIM WA
+// =========================
+//     KIRIM WHATSAPP
+// =========================
 document.getElementById("kirimWA").addEventListener("click", () => {
-    const nis = document.getElementById("nis").value;
-    const nama = document.getElementById("nama").value;
-    const kelas = document.getElementById("kelas").value;
+    const nis = document.getElementById("nis").value.trim();
+    const nama = document.getElementById("nama").value.trim();
+    const kelas = document.getElementById("kelas").value.trim();
     const status = document.getElementById("status").value;
-    const ket = document.getElementById("keterangan").value;
+    const ket = document.getElementById("keterangan").value.trim();
 
-    if (nis === "") {
-        alert("Scan QR terlebih dahulu!");
+    if (nis === "" || nama === "" || kelas === "") {
+        alert("NIS, Nama, dan Kelas harus diisi!");
         return;
     }
 
-    const noGuru = "6281234567890"; // Ganti nomor guru
+    const noGuru = "6281234567890"; // Ganti nomor guru/piket
     let pesan = `📚 *ABSENSI SISWA*\n`;
     pesan += `NIS: ${nis}\n`;
     pesan += `Nama: ${nama}\n`;
