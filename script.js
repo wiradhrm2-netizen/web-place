@@ -1,42 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Absensi QR + WA Otomatis</title>
-    <script src="https://unpkg.com/html5-qrcode"></script>
-</head>
-
-<body>
-    <h2>ABSENSI SISWA</h2>
-
-    <div id="reader" style="width:250px;"></div>
-
-    <br>
-
-    <label>NIS:</label>
-    <input type="text" id="nis" readonly><br><br>
-
-    <label>Nama:</label>
-    <input type="text" id="nama" readonly><br><br>
-
-    <label>Kelas:</label>
-    <input type="text" id="kelas" readonly><br><br>
-
-    <label>Status:</label>
-    <select id="status">
-        <option>Hadir</option>
-        <option>Izin</option>
-        <option>Sakit</option>
-    </select>
-
-    <div id="keteranganBox" style="display:none;">
-        <label>Keterangan:</label>
-        <input type="text" id="keterangan"><br><br>
-    </div>
-
-    <button id="manualBtn">Mode Manual</button>
-    <button id="kirimWA">Kirim Absensi</button>
-
-<script>
 // =========================
 //      DATABASE SISWA
 // =========================
@@ -50,8 +11,7 @@ const dataSiswa = {
 //   TAMPILKAN KETERANGAN
 // =========================
 document.getElementById("status").addEventListener("change", function () {
-    document.getElementById("keteranganBox").style.display =
-        (this.value === "Hadir") ? "none" : "block";
+    document.getElementById("keteranganBox").classList.toggle("hidden", this.value === "Hadir");
 });
 
 // =========================
@@ -66,6 +26,7 @@ function mulaiScanner() {
             scanner.start(
                 cameras[0].id,
                 { fps: 10, qrbox: 200 },
+
                 hasil => {
                     document.getElementById("nis").value = hasil;
 
@@ -97,15 +58,14 @@ document.getElementById("manualBtn").addEventListener("click", () => {
 
     alert("Mode Isi Manual diaktifkan!");
 
-    document.getElementById("nis").removeAttribute("readonly");
-    document.getElementById("nama").removeAttribute("readonly");
-    document.getElementById("kelas").removeAttribute("readonly");
+    ["nis", "nama", "kelas"].forEach(id => {
+        document.getElementById(id).removeAttribute("readonly");
+    });
 });
 
 // =========================
-//  KIRIM DATA KE SERVER WA
+//    KIRIM ABSEN VIA SERVER
 // =========================
-
 document.getElementById("kirimWA").addEventListener("click", () => {
     const nis = document.getElementById("nis").value.trim();
     const nama = document.getElementById("nama").value.trim();
@@ -118,11 +78,23 @@ document.getElementById("kirimWA").addEventListener("click", () => {
         return;
     }
 
-    fetch("https://domain-kamu.com/kirim-absen", {
+    fetch("/kirim-absen", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-            nis, nama, kelas, status, keterangan: ket
+            nis,
+            nama,
+            kelas,
+            status,
+            keterangan: ket
         })
     })
-    .then(res
+    .then(res => res.json())
+    .then(data => {
+        if (data.success) {
+            alert("✅ Absensi berhasil dikirim ke WhatsApp guru!");
+        } else {
+            alert("❌ Gagal mengirim absensi!");
+        }
+    });
+});
