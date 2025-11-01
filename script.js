@@ -53,9 +53,10 @@ Html5Qrcode.getCameras().then(cameras => {
 });
 
 // =========================
-// KIRIM ABSENSI via SERVER
+// KIRIM ABSENSI LANGSUNG KE WA (TANPA SERVER)
 // =========================
 document.getElementById("kirimWA").addEventListener("click", () => {
+
     const nis = document.getElementById("nis").value.trim();
     const nama = document.getElementById("nama").value.trim();
     const kelas = document.getElementById("kelas").value.trim();
@@ -67,19 +68,21 @@ document.getElementById("kirimWA").addEventListener("click", () => {
         return;
     }
 
-    fetch("/kirim-absen", {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({
-            nis, nama, kelas, status, keterangan: ket
-        })
-    })
-    .then(res => res.json())
-    .then(data => {
-        if (data.success) {
-            window.location.href = data.link;  // ✅ buka WA otomatis
-        } else {
-            alert("❌ Gagal mengirim absensi");
-        }
-    });
+    const pesan =
+`ABSENSI SISWA
+=================
+NIS : ${nis}
+Nama : ${nama}
+Kelas : ${kelas}
+Status : ${status}
+Keterangan : ${ket || "-"}
+=================`;
+
+    // Kirim ke WA guru
+    const noGuru = "6282228266317";
+
+    const url = `https://wa.me/${noGuru}?text=${encodeURIComponent(pesan)}`;
+
+    // ✅ langsung buka WhatsApp (HP / WA Web)
+    window.open(url, "_blank");
 });
