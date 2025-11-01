@@ -3,7 +3,7 @@ const app = express();
 const PORT = 3000;
 
 app.use(express.json());
-app.use(express.static(__dirname)); // supaya bisa buka HTML
+app.use(express.static(__dirname));
 
 app.post("/kirim-absen", (req, res) => {
     const { nis, nama, kelas, status, keterangan } = req.body;
@@ -18,12 +18,13 @@ Status : ${status}
 Keterangan : ${keterangan || "-"}
 ====================`;
 
-    // Encode pesan ke URL
-    const url = `https://wa.me/6282228266317?text=${encodeURIComponent(pesan)}`;
+    // Link WA final
+    const linkWA = `https://wa.me/6282228266317?text=${encodeURIComponent(pesan)}`;
 
-    console.log("WA terkirim:", url);
-
-    res.json({ success: true });
+    res.json({
+        success: true,
+        link: linkWA
+    });
 });
 
 app.listen(PORT, () => {
