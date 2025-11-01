@@ -1,73 +1,54 @@
 body {
     font-family: Arial, sans-serif;
     background: #f0f0f0;
-    display: flex;
-    justify-content: center;
-    padding: 20px;
 }
 
 .container {
+    width: 320px;
     background: white;
-    padding: 25px;
-    width: 360px;
+    padding: 20px;
+    margin: 20px auto;
     border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    box-shadow: 0 0 10px #ccc;
 }
 
 h2 {
     text-align: center;
-    margin-bottom: 20px;
-}
-
-#reader {
-    width: 100%;
-    margin-bottom: 20px;
 }
 
 label {
     font-weight: bold;
-    margin-top: 15px;
-    display: block;
 }
 
-input, select, textarea {
+input, select {
     width: 100%;
-    padding: 10px;
-    margin-top: 6px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-}
-
-textarea {
-    height: 80px;
-    resize: none;
+    padding: 7px;
+    margin: 5px 0 15px;
+    border-radius: 5px;
+    border: 1px solid #aaa;
 }
 
 button {
     width: 100%;
-    padding: 12px;
+    padding: 10px;
+    margin-top: 8px;
+    cursor: pointer;
+    background: #2196F3;
     color: white;
     border: none;
-    border-radius: 6px;
-    margin-top: 15px;
-    cursor: pointer;
-    font-size: 16px;
+    border-radius: 5px;
+    font-weight: bold;
 }
 
-/* Tombol Manual */
-.btn-manual {
-    background: #007bff;
+#manualBtn {
+    background: #ff9800;
 }
 
-.btn-manual:hover {
-    background: #0056b3;
+.qr-box {
+    width: 250px;
+    margin: 0 auto 20px;
 }
 
-/* Tombol Kirim WA */
-#kirimWA {
-    background: #28a745;
-}
-
-#kirimWA:hover {
-    background: #1e7e34;
+.hidden {
+    display: none;
 }
