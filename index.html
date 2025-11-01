@@ -8,48 +8,49 @@
 
 <body>
 
-<h2>ABSENSI SISWA</h2>
+<div class="container">
+    <h2>ABSENSI SISWA</h2>
 
-<div class="menu">
-    <button id="btnScan">SCAN QR</button>
-    <button id="btnManual">ISI MANUAL</button>
-</div>
-
-<!-- QR Scanner -->
-<div id="scanSection" class="hidden">
-    <h3>SCAN KARTU SISWA</h3>
-    <div id="reader" style="width:250px;"></div>
-</div>
-
-<!-- Form Manual -->
-<div id="formSection" class="hidden">
-    <h3>FORM ABSENSI</h3>
-
-    <label>NIS:</label>
-    <input type="text" id="nis">
-
-    <label>Nama:</label>
-    <input type="text" id="nama">
-
-    <label>Kelas:</label>
-    <input type="text" id="kelas">
-
-    <label>Status:</label>
-    <select id="status">
-        <option>Hadir</option>
-        <option>Izin</option>
-        <option>Sakit</option>
-    </select>
-
-    <div id="keteranganBox" class="hidden">
-        <label>Keterangan:</label>
-        <input type="text" id="keterangan">
+    <div class="menu">
+        <button id="btnScan">SCAN QR</button>
+        <button id="btnManual">ISI MANUAL</button>
     </div>
 
-    <button id="kirimWA">Kirim Absensi</button>
+    <!-- SCAN QR -->
+    <div id="scanSection" class="hidden">
+        <h3>SCAN KARTU SISWA</h3>
+        <div id="reader" style="width:250px;"></div>
+    </div>
+
+    <!-- FORM MANUAL -->
+    <div id="formSection" class="hidden">
+        <h3>FORM ABSENSI</h3>
+
+        <label>NIS:</label>
+        <input type="text" id="nis">
+
+        <label>Nama:</label>
+        <input type="text" id="nama">
+
+        <label>Kelas:</label>
+        <input type="text" id="kelas">
+
+        <label>Status:</label>
+        <select id="status">
+            <option>Hadir</option>
+            <option>Izin</option>
+            <option>Sakit</option>
+        </select>
+
+        <div id="keteranganBox" class="hidden">
+            <label>Keterangan:</label>
+            <input type="text" id="keterangan">
+        </div>
+
+        <button id="kirimWA">Kirim Absensi</button>
+    </div>
 </div>
 
 <script src="script.js"></script>
-
 </body>
 </html>
