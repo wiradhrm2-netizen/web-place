@@ -1,5 +1,5 @@
 // =========================
-//      DATABASE SISWA
+// DATABASE SISWA
 // =========================
 const dataSiswa = {
     "12345": { nama: "Budi Santoso", kelas: "8A" },
@@ -8,63 +8,52 @@ const dataSiswa = {
 };
 
 // =========================
-//   TAMPILKAN KETERANGAN
+// PILIHAN MENU
 // =========================
-document.getElementById("status").addEventListener("change", function () {
-    document.getElementById("keteranganBox").classList.toggle("hidden", this.value === "Hadir");
+document.getElementById("btnScan").onclick = () => {
+    document.getElementById("scanSection").classList.remove("hidden");
+    document.getElementById("formSection").classList.remove("hidden");
+};
+
+document.getElementById("btnManual").onclick = () => {
+    document.getElementById("scanSection").classList.add("hidden");
+    document.getElementById("formSection").classList.remove("hidden");
+};
+
+// =========================
+// STATUS KETERANGAN
+// =========================
+document.getElementById("status").addEventListener("change", function() {
+    document.getElementById("keteranganBox").classList.toggle(
+        "hidden",
+        this.value === "Hadir"
+    );
 });
 
 // =========================
-//        QR SCANNER
+// QR SCANNER
 // =========================
 const scanner = new Html5Qrcode("reader");
-let scannerAktif = true;
 
-function mulaiScanner() {
-    Html5Qrcode.getCameras().then(cameras => {
-        if (cameras.length > 0) {
-            scanner.start(
-                cameras[0].id,
-                { fps: 10, qrbox: 200 },
+Html5Qrcode.getCameras().then(cameras => {
+    if (cameras.length > 0) {
+        scanner.start(
+            cameras[0].id,
+            { fps: 10, qrbox: 200 },
+            hasil => {
+                document.getElementById("nis").value = hasil;
 
-                hasil => {
-                    document.getElementById("nis").value = hasil;
-
-                    if (dataSiswa[hasil]) {
-                        document.getElementById("nama").value = dataSiswa[hasil].nama;
-                        document.getElementById("kelas").value = dataSiswa[hasil].kelas;
-                    } else {
-                        document.getElementById("nama").value = "";
-                        document.getElementById("kelas").value = "";
-                    }
-
-                    scanner.stop();
-                    scannerAktif = false;
-                },
-                err => {}
-            );
-        }
-    });
-}
-
-mulaiScanner();
-
-// =========================
-//    MODE INPUT MANUAL
-// =========================
-document.getElementById("manualBtn").addEventListener("click", () => {
-    if (scannerAktif) scanner.stop();
-    scannerAktif = false;
-
-    alert("Mode Isi Manual diaktifkan!");
-
-    ["nis", "nama", "kelas"].forEach(id => {
-        document.getElementById(id).removeAttribute("readonly");
-    });
+                if (dataSiswa[hasil]) {
+                    document.getElementById("nama").value = dataSiswa[hasil].nama;
+                    document.getElementById("kelas").value = dataSiswa[hasil].kelas;
+                }
+            }
+        );
+    }
 });
 
 // =========================
-//    KIRIM ABSEN VIA SERVER
+// KIRIM ABSENSI KE SERVER
 // =========================
 document.getElementById("kirimWA").addEventListener("click", () => {
     const nis = document.getElementById("nis").value.trim();
@@ -80,21 +69,14 @@ document.getElementById("kirimWA").addEventListener("click", () => {
 
     fetch("/kirim-absen", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {"Content-Type": "application/json"},
         body: JSON.stringify({
-            nis,
-            nama,
-            kelas,
-            status,
-            keterangan: ket
+            nis, nama, kelas, status, keterangan: ket
         })
     })
     .then(res => res.json())
     .then(data => {
-        if (data.success) {
-            alert("✅ Absensi berhasil dikirim ke WhatsApp guru!");
-        } else {
-            alert("❌ Gagal mengirim absensi!");
-        }
+        if (data.success) alert("✅ Absensi terkirim ke WhatsApp!");
+        else alert("❌ Gagal mengirim absensi");
     });
 });
