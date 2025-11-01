@@ -76,7 +76,7 @@ document.getElementById("kirimWA").addEventListener("click", () => {
         return;
     }
 
-    const noGuru = "6281234567890"; // Ganti nomor guru/piket
+    const noGuru = "082228266317"; // Ganti nomor guru/piket
     let pesan = `📚 *ABSENSI SISWA*\n`;
     pesan += `NIS: ${nis}\n`;
     pesan += `Nama: ${nama}\n`;
