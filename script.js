@@ -1,11 +1,15 @@
-// DATABASE SISWA
+// =========================
+//      DATABASE SISWA
+// =========================
 const dataSiswa = {
     "12345": { nama: "Budi Santoso", kelas: "8A" },
     "67890": { nama: "Siti Aminah", kelas: "9B" },
     "11223": { nama: "Rudi Hartono", kelas: "7C" }
 };
 
-// Tampilkan kolom keterangan ketika Izin / Sakit
+// =========================
+//   TAMPILKAN KETERANGAN
+// =========================
 document.getElementById("status").addEventListener("change", function () {
     document.getElementById("keteranganBox").style.display =
         (this.value === "Hadir") ? "none" : "block";
@@ -20,9 +24,11 @@ let scannerAktif = true;
 function mulaiScanner() {
     Html5Qrcode.getCameras().then(cameras => {
         if (cameras.length > 0) {
+
             scanner.start(
                 cameras[0].id,
                 { fps: 10, qrbox: 200 },
+
                 hasil => {
                     document.getElementById("nis").value = hasil;
 
@@ -46,14 +52,14 @@ function mulaiScanner() {
 mulaiScanner();
 
 // =========================
-//       MODE INPUT MANUAL
+//    MODE INPUT MANUAL
 // =========================
 document.getElementById("manualBtn").addEventListener("click", () => {
     if (scannerAktif) {
         scanner.stop();
     }
-    scannerAktif = false;
 
+    scannerAktif = false;
     alert("Mode Isi Manual diaktifkan!");
 
     document.getElementById("nis").removeAttribute("readonly");
@@ -62,7 +68,7 @@ document.getElementById("manualBtn").addEventListener("click", () => {
 });
 
 // =========================
-//     KIRIM WHATSAPP
+//  KIRIM DATA KE SERVER WA
 // =========================
 document.getElementById("kirimWA").addEventListener("click", () => {
     const nis = document.getElementById("nis").value.trim();
@@ -76,18 +82,23 @@ document.getElementById("kirimWA").addEventListener("click", () => {
         return;
     }
 
-    const noGuru = "082228266317"; // Ganti nomor guru/piket
-    let pesan = `📚 *ABSENSI SISWA*\n`;
-    pesan += `NIS: ${nis}\n`;
-    pesan += `Nama: ${nama}\n`;
-    pesan += `Kelas: ${kelas}\n`;
-    pesan += `Status: ${status}\n`;
-    pesan += `Waktu: ${new Date().toLocaleString()}\n`;
-
-    if (status !== "Hadir") {
-        pesan += `Keterangan: ${ket || "-"}\n`;
-    }
-
-    const waURL = `https://wa.me/${noGuru}?text=${encodeURIComponent(pesan)}`;
-    window.open(waURL, "_blank");
+    fetch("https://domain-kamu.com/kirim-absen", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            nis,
+            nama,
+            kelas,
+            status,
+            keterangan: ket
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.success) {
+            alert("✅ Absensi berhasil dikirim ke WhatsApp guru!");
+        } else {
+            alert("❌ Gagal mengirim absensi! Server bermasalah.");
+        }
+    });
 });
