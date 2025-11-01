@@ -1,51 +1,43 @@
 <!DOCTYPE html>
-<html lang="id">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Absensi QR Sekolah</title>
+    <title>Absensi QR WA Otomatis</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/html5-qrcode"></script>
 </head>
+
 <body>
 
-<div class="container">
-    <h2>Absensi Sekolah QR</h2>
+    <div class="container">
+        <h2>ABSENSI SISWA</h2>
 
-    <!-- QR Scanner Area -->
-    <div id="reader"></div>
+        <div id="reader" class="qr-box"></div>
 
-    <!-- Tombol Manual -->
-    <button id="manualBtn" class="btn-manual">Isi Manual</button>
+        <label>NIS:</label>
+        <input type="text" id="nis" readonly>
 
-    <!-- Form Absensi -->
-    <form id="absenForm">
-        <label>NIS</label>
-        <input type="text" id="nis">
+        <label>Nama:</label>
+        <input type="text" id="nama" readonly>
 
-        <label>Nama</label>
-        <input type="text" id="nama">
+        <label>Kelas:</label>
+        <input type="text" id="kelas" readonly>
 
-        <label>Kelas</label>
-        <input type="text" id="kelas">
-
-        <label>Status</label>
+        <label>Status:</label>
         <select id="status">
-            <option value="Hadir">✅ Hadir</option>
-            <option value="Izin">🟡 Izin</option>
-            <option value="Sakit">🔴 Sakit</option>
+            <option>Hadir</option>
+            <option>Izin</option>
+            <option>Sakit</option>
         </select>
 
-        <div id="keteranganBox" style="display:none;">
-            <label>Keterangan (Opsional)</label>
-            <textarea id="keterangan" placeholder="Masukkan alasan izin/sakit"></textarea>
+        <div id="keteranganBox" class="hidden">
+            <label>Keterangan:</label>
+            <input type="text" id="keterangan">
         </div>
 
-        <button type="button" id="kirimWA">Kirim Absen</button>
-    </form>
-</div>
+        <button id="manualBtn">Mode Manual</button>
+        <button id="kirimWA">Kirim Absensi</button>
+    </div>
 
-<script src="https://unpkg.com/html5-qrcode"></script>
-<script src="script.js"></script>
-
+    <script src="script.js"></script>
 </body>
 </html>
