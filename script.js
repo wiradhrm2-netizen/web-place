@@ -53,7 +53,7 @@ Html5Qrcode.getCameras().then(cameras => {
 });
 
 // =========================
-// KIRIM ABSENSI KE SERVER
+// KIRIM ABSENSI via SERVER
 // =========================
 document.getElementById("kirimWA").addEventListener("click", () => {
     const nis = document.getElementById("nis").value.trim();
@@ -63,7 +63,7 @@ document.getElementById("kirimWA").addEventListener("click", () => {
     const ket = document.getElementById("keterangan").value.trim();
 
     if (!nis || !nama || !kelas) {
-        alert("NIS, Nama, dan Kelas harus diisi!");
+        alert("NIS, Nama, dan Kelas wajib diisi!");
         return;
     }
 
@@ -76,7 +76,10 @@ document.getElementById("kirimWA").addEventListener("click", () => {
     })
     .then(res => res.json())
     .then(data => {
-        if (data.success) alert("✅ Absensi terkirim ke WhatsApp!");
-        else alert("❌ Gagal mengirim absensi");
+        if (data.success) {
+            window.location.href = data.link;  // ✅ buka WA otomatis
+        } else {
+            alert("❌ Gagal mengirim absensi");
+        }
     });
 });
