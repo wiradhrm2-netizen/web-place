@@ -1,54 +1,43 @@
 body {
     font-family: Arial, sans-serif;
-    background: #f0f0f0;
-}
-
-.container {
-    width: 320px;
-    background: white;
     padding: 20px;
-    margin: 20px auto;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #ccc;
 }
 
 h2 {
     text-align: center;
 }
 
-label {
-    font-weight: bold;
-}
-
-input, select {
-    width: 100%;
-    padding: 7px;
-    margin: 5px 0 15px;
-    border-radius: 5px;
-    border: 1px solid #aaa;
+.menu {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 button {
-    width: 100%;
-    padding: 10px;
-    margin-top: 8px;
-    cursor: pointer;
+    padding: 10px 20px;
+    margin: 5px;
     background: #2196F3;
     color: white;
     border: none;
-    border-radius: 5px;
-    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
 }
 
-#manualBtn {
-    background: #ff9800;
-}
-
-.qr-box {
-    width: 250px;
-    margin: 0 auto 20px;
+button:hover {
+    background: #0b7dda;
 }
 
 .hidden {
     display: none;
+}
+
+input, select {
+    width: 98%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#formSection, #scanSection {
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 8px;
 }
