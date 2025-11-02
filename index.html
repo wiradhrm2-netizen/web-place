@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="id">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Absensi QR WhatsApp</title>
+    <title>Absensi QR WhatsApp Server</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/html5-qrcode"></script>
 </head>
@@ -13,17 +12,17 @@
     <h2>ABSENSI SISWA</h2>
 
     <div class="menu">
-        <button id="btnScan" class="btn">SCAN QR</button>
-        <button id="btnManual" class="btn">ISI MANUAL</button>
+        <button id="btnScan">SCAN QR</button>
+        <button id="btnManual">ISI MANUAL</button>
     </div>
 
     <!-- SCAN QR -->
     <div id="scanSection" class="hidden">
         <h3>SCAN KARTU SISWA</h3>
-        <div id="reader" class="qr-box"></div>
+        <div id="reader"></div>
     </div>
 
-    <!-- FORM MANUAL -->
+    <!-- FORM -->
     <div id="formSection" class="hidden">
         <h3>FORM ABSENSI</h3>
 
@@ -48,7 +47,7 @@
             <input type="text" id="keterangan">
         </div>
 
-        <button id="kirimWA" class="btn-submit">Kirim Absensi</button>
+        <button id="kirimWA">Kirim Absensi</button>
     </div>
 </div>
 
