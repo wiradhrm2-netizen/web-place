@@ -3,58 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PC CARE - E-VOLT</title>
+    <title>PC CARE – E-VOLT</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <!-- NAVBAR -->
-    <header>
-        <nav class="navbar">
-            <h1 class="logo">PC CARE</h1>
-            <ul>
-                <li><a href="#home">Beranda</a></li>
-                <li><a href="#tentang">Tentang E-VOLT</a></li>
-                <li><a href="#kontak">Kontak</a></li>
-            </ul>
-        </nav>
-    </header>
+<header class="header">
+    <div class="logo">PC CARE</div>
 
-    <!-- HERO SECTION -->
-    <section id="home" class="hero">
-        <div class="hero-text">
-            <h2>Selamat Datang di PC CARE</h2>
-            <p>Layanan perawatan PC terpercaya berbasis sistem E-VOLT.</p>
-            <a href="#tentang" class="btn">Pelajari Lebih Lanjut</a>
-        </div>
-        <div class="hero-img">
-            <img src="img/foto.jpg" alt="Foto PC Care">
-        </div>
-    </section>
+    <!-- TITIK 3 MENU -->
+    <div class="menu-kebab" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
 
-    <!-- TENTANG -->
-    <section id="tentang" class="tentang">
-        <h2>Tentang E-VOLT</h2>
-        <p>
-            E-VOLT adalah layanan inovatif untuk memudahkan pengguna dalam memonitor,
-            merawat, dan mengoptimalkan perangkat komputer mereka. 
-            Sistem ini dirancang untuk memberikan deteksi dini terhadap kerusakan,
-            analisis performa, hingga saran perbaikan terbaik secara otomatis.
-        </p>
+    <!-- MENU POPUP -->
+    <div class="menu-popup" id="menuPopup">
+        <a href="#home">Beranda</a>
+        <a href="#tentang">Tentang PC CARE</a>
+        <a href="#kontak">Contact Admin</a>
+    </div>
+</header>
 
-        <p>
-            Dengan E-VOLT, kami menghadirkan solusi teknologi modern dalam dunia servis PC,
-            agar setiap pengguna dapat merasakan kenyamanan, kecepatan, dan keamanan
-            dalam merawat perangkat mereka.
-        </p>
-    </section>
+<!-- HERO SECTION -->
+<section id="home" class="hero">
+    <div class="hero-text">
+        <h1>Selamat Datang di PC CARE</h1>
+        <p>Sistem layanan perawatan komputer berbasis E-VOLT untuk memonitor, menganalisis, dan meningkatkan performa PC Anda secara profesional.</p>
+        <button class="btn" onclick="goToTentang()">Pelajari PC CARE</button>
+    </div>
 
-    <!-- FOOTER -->
-    <footer id="kontak">
-        <p>PC CARE - E-VOLT © 2025</p>
-        <p>Hubungi kami: support@pccare.com</p>
-    </footer>
+    <div class="hero-img">
+        <img src="img/foto.jpg" alt="PC CARE">
+    </div>
+</section>
+
+<!-- TENTANG PC CARE -->
+<section id="tentang" class="tentang">
+    <h2>Tentang PC CARE – E-VOLT</h2>
+    <p>
+        PC CARE adalah layanan perawatan PC pintar yang menggunakan sistem E-VOLT.
+        Teknologi ini mampu memberikan analisis performa, deteksi kerusakan dini, monitoring suhu, dan saran perbaikan secara otomatis.
+    </p>
+    <p>
+        Dengan pendekatan modern dan sistem yang user-friendly, PC CARE memberikan pengalaman perawatan komputer yang cepat, aman, dan efisien untuk semua pengguna.
+    </p>
+</section>
+
+<!-- CONTACT ADMIN -->
+<section id="kontak" class="kontak">
+    <h2>Contact Admin</h2>
+    <p>Jika Anda membutuhkan bantuan, silakan hubungi admin melalui tombol di bawah.</p>
+
+    <button class="btn-wa" onclick="chatAdmin()">Chat Admin</button>
+</section>
+
+<footer>
+    <p>PC CARE – E-VOLT © 2025</p>
+</footer>
 
 <script src="script.js"></script>
 </body>
