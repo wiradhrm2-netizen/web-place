@@ -8,59 +8,61 @@
 </head>
 <body>
 
+<!-- HEADER -->
 <header class="header">
     <div class="logo">PC CARE</div>
 
-    <!-- TITIK 3 MENU -->
+    <!-- ICON TITIK 3 -->
     <div class="menu-kebab" onclick="toggleMenu()">
         <span></span>
         <span></span>
         <span></span>
     </div>
 
-    <!-- MENU POPUP -->
+    <!-- POPUP MENU -->
     <div class="menu-popup" id="menuPopup">
-        <a href="#home">Beranda</a>
-        <a href="#tentang">Tentang PC CARE</a>
-        <a href="#kontak">Contact Admin</a>
+        <a href="#kus">Apa itu KUS E-VOLT Double Track Teknik Elektro</a>
+        <a href="#program">Apa itu Program PC CARE</a>
+        <a href="#contact">Contact Admin</a>
     </div>
 </header>
 
-<!-- HERO SECTION -->
-<section id="home" class="hero">
-    <div class="hero-text">
-        <h1>Selamat Datang di PC CARE</h1>
-        <p>Sistem layanan perawatan komputer berbasis E-VOLT untuk memonitor, menganalisis, dan meningkatkan performa PC Anda secara profesional.</p>
-        <button class="btn" onclick="goToTentang()">Pelajari PC CARE</button>
-    </div>
-
-    <div class="hero-img">
-        <img src="img/foto.jpg" alt="PC CARE">
+<!-- HALAMAN DEPAN (HERO) -->
+<section class="hero">
+    <div class="hero-content">
+        <img src="img/foto.jpg" class="logo-hero" alt="Logo PC CARE">
+        <h1>Hallo, Selamat Datang di <span>PC CARE</span></h1>
+        <p>Sistem Informasi & Perawatan Komputer Profesional Berbasis E-VOLT</p>
     </div>
 </section>
 
-<!-- TENTANG PC CARE -->
-<section id="tentang" class="tentang">
-    <h2>Tentang PC CARE – E-VOLT</h2>
+<!-- SECTION KUS -->
+<section id="kus" class="section">
+    <h2>Apa itu KUS E-VOLT Double Track Teknik Elektro?</h2>
     <p>
-        PC CARE adalah layanan perawatan PC pintar yang menggunakan sistem E-VOLT.
-        Teknologi ini mampu memberikan analisis performa, deteksi kerusakan dini, monitoring suhu, dan saran perbaikan secara otomatis.
-    </p>
-    <p>
-        Dengan pendekatan modern dan sistem yang user-friendly, PC CARE memberikan pengalaman perawatan komputer yang cepat, aman, dan efisien untuk semua pengguna.
+        KUS E-VOLT adalah program keahlian Double Track yang fokus pada bidang Teknik Elektro
+        dengan penguasaan kompetensi energi, voltase, instalasi listrik, dan teknologi digital modern.
     </p>
 </section>
 
-<!-- CONTACT ADMIN -->
-<section id="kontak" class="kontak">
+<!-- SECTION PROGRAM -->
+<section id="program" class="section">
+    <h2>Apa itu Program PC CARE?</h2>
+    <p>
+        PC CARE adalah sistem layanan modern yang membantu menganalisis,
+        memonitor, dan merawat komputer secara otomatis menggunakan teknologi E-VOLT.
+    </p>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
     <h2>Contact Admin</h2>
-    <p>Jika Anda membutuhkan bantuan, silakan hubungi admin melalui tombol di bawah.</p>
-
-    <button class="btn-wa" onclick="chatAdmin()">Chat Admin</button>
+    <p>Jika membutuhkan bantuan, klik tombol di bawah untuk menghubungi admin.</p>
+    <button class="btn-wa" onclick="chatAdmin()">Hubungi Admin</button>
 </section>
 
 <footer>
-    <p>PC CARE – E-VOLT © 2025</p>
+    <p>© 2025 PC CARE – E-VOLT</p>
 </footer>
 
 <script src="script.js"></script>
