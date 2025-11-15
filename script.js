@@ -1,13 +1,8 @@
-// Tampilkan Menu Titik 3
-function toggleMenu() {
-    document.getElementById("menuPopup").classList.toggle("show");
+function toggleMenu(){
+    const menu = document.getElementById("menuPopup");
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
 }
 
-// WhatsApp Admin
-const nomorAdmin = "6282228266317";
-
-function chatAdmin() {
-    const pesan = "Halo Admin, saya ingin bertanya tentang PC CARE.";
-    const url = `https://wa.me/${nomorAdmin}?text=${encodeURIComponent(pesan)}`;
-    window.open(url, "_blank");
+function chatAdmin(){
+    window.open("https://wa.me/6282228266317?text=Halo%20Admin%20PC%20CARE");
 }
