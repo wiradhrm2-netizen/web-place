@@ -1,95 +1,46 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PC CARE – E-VOLT</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins, sans-serif;}
-body{background:#f5f5f5;color:#222;}
-
-/* HEADER */
-.header{width:100%;background:#ffcc00;display:flex;justify-content:space-between;align-items:center;padding:15px 20px;position:fixed;top:0;left:0;z-index:1000;box-shadow:0 2px 8px rgba(0,0,0,0.2);} 
-.logo{font-size:22px;font-weight:700;color:#000;letter-spacing:1px;}
-
-.menu-kebab{width:28px;cursor:pointer;display:flex;flex-direction:column;gap:5px;}
-.menu-kebab span{width:100%;height:4px;background:#000;border-radius:3px;}
-
-.menu-popup{position:absolute;top:60px;right:20px;background:white;width:240px;border-radius:10px;box-shadow:0 4px 14px rgba(0,0,0,0.2);padding:10px;display:none;}
-.menu-popup a{display:block;padding:12px 15px;color:#111;text-decoration:none;border-bottom:1px solid #eee;font-size:15px;}
-.menu-popup a:last-child{border-bottom:none;}
-.menu-popup a:hover{background:#ffeb99;}
-
-/* HERO */
-.hero{padding:140px 20px 80px;text-align:center;background:white;}
-.logo-hero{width:140px;margin-bottom:20px;border-radius:10px;object-fit:cover;}
-.hero h1{font-size:30px;font-weight:700;margin-bottom:10px;}
-.hero span{color:#ffcc00;}
-.hero p{font-size:16px;color:#555;}
-
-/* SECTIONS */
-.section{padding:70px 20px;margin-top:20px;background:#fff;border-radius:10px;width:90%;max-width:900px;margin-left:auto;margin-right:auto;box-shadow:0 4px 12px rgba(0,0,0,0.08);} 
-.section h2{font-size:24px;margin-bottom:10px;color:#000;font-weight:700;}
-.section p{font-size:16px;color:#444;line-height:1.6;}
-
-/* BUTTON */
-.btn-wa{margin-top:15px;background:#25D366;color:white;padding:12px 20px;border:none;border-radius:8px;font-size:17px;cursor:pointer;font-weight:600;}
-.btn-wa:hover{background:#1ebe5d;}
-
-footer{text-align:center;padding:25px 0;color:#555;margin-top:50px;font-size:14px;}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- HEADER -->
 <header class="header">
     <div class="logo">PC CARE</div>
 
-    <!-- ICON TITIK 3 -->
     <div class="menu-kebab" onclick="toggleMenu()">
         <span></span>
         <span></span>
         <span></span>
     </div>
 
-    <!-- MENU POPUP -->
     <div class="menu-popup" id="menuPopup">
-        <a href="#kus">Apa itu KUS E-VOLT Double Track Teknik Elektro</a>
-        <a href="#program">Apa itu Program PC CARE</a>
+        <a href="kus.html">Detail KUS E-VOLT</a>
+        <a href="#program">Program PC CARE</a>
         <a href="#contact">Contact Admin</a>
     </div>
 </header>
 
-<!-- HERO SECTION -->
 <section class="hero">
     <img src="logo.jpg" class="logo-hero" alt="Logo PC CARE">
     <h1>Hallo, Selamat Datang di <span>PC CARE</span></h1>
     <p>Sistem Informasi & Perawatan Komputer Profesional Berbasis E-VOLT</p>
 </section>
 
-<!-- KUS SECTION -->
-<section id="kus" class="section">
-    <h2>Apa itu KUS E-VOLT Double Track Teknik Elektro?</h2>
-    <p>
-        KUS E-VOLT adalah program keahlian Double Track yang fokus pada bidang Teknik Elektro
-        dengan penguasaan kompetensi energi, voltase, instalasi listrik, dan teknologi digital modern.
-    </p>
-</section>
-
-<!-- PROGRAM SECTION -->
 <section id="program" class="section">
     <h2>Apa itu Program PC CARE?</h2>
     <p>
         PC CARE adalah sistem layanan modern yang membantu menganalisis,
-        memonitor, dan merawat komputer secara efektif, dengan efisiensi waktu.
-        Program ini diimplementasikan oleh KUS E-VOLT.
+        memonitor, dan merawat komputer secara efektif. Program ini diimplementasikan oleh KUS E-VOLT.
     </p>
 </section>
 
-<!-- CONTACT SECTION -->
 <section id="contact" class="section">
     <h2>Contact Admin</h2>
-    <p>Jika membutuhkan bantuan, klik tombol di bawah untuk menghubungi admin.</p>
+    <p>Klik tombol di bawah untuk menghubungi admin.</p>
     <button class="btn-wa" onclick="chatAdmin()">Hubungi Admin</button>
 </section>
 
@@ -97,16 +48,6 @@ footer{text-align:center;padding:25px 0;color:#555;margin-top:50px;font-size:14p
     <p>© 2025 PC CARE – E-VOLT</p>
 </footer>
 
-<script>
-function toggleMenu(){
-    const menu = document.getElementById("menuPopup");
-    menu.style.display = menu.style.display === "block" ? "none" : "block";
-}
-
-function chatAdmin(){
-    window.open("https://wa.me/6282228266317?text=Halo%20Admin,%20Saya%20membutuhkan%20bantuan%20PC%20CARE.");
-}
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
