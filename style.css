@@ -1,3 +1,4 @@
+/* GLOBAL */
 * {
     margin: 0;
     padding: 0;
@@ -5,141 +6,161 @@
     font-family: 'Poppins', sans-serif;
 }
 
-/* BODY */
 body {
-    background: #ffffff;
+    background: #f6f7fb;
     color: #222;
 }
 
 /* HEADER */
 .header {
     width: 100%;
-    background: #ffcb05; /* Kuning Modern */
-    color: #000;
-    padding: 15px 40px;
+    background: #ffcc00;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 15px 22px;
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 99;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    z-index: 1000;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.18);
 }
 
 .logo {
     font-size: 22px;
     font-weight: 700;
+    color: #000;
+    letter-spacing: 1px;
 }
 
-/* TITIK 3 */
+/* MENU 3 TITIK */
 .menu-kebab {
+    width: 28px;
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     gap: 5px;
-    cursor: pointer;
 }
-
 .menu-kebab span {
-    width: 6px;
-    height: 6px;
+    height: 4px;
     background: #000;
-    border-radius: 50%;
+    border-radius: 5px;
 }
 
-/* MENU POPUP */
+/* POPUP MENU */
 .menu-popup {
     position: absolute;
     top: 60px;
-    right: 40px;
-    background: white;
-    padding: 15px 20px;
+    right: 22px;
+    width: 240px;
+    background: #fff;
     border-radius: 12px;
     display: none;
-    flex-direction: column;
-    gap: 10px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    overflow: hidden;
 }
 
 .menu-popup a {
+    display: block;
+    padding: 13px 16px;
+    color: #111;
+    font-size: 15px;
     text-decoration: none;
-    color: #333;
-    font-weight: 500;
+    border-bottom: 1px solid #ececec;
+    transition: .2s;
 }
 
-.menu-popup.show {
-    display: flex;
+.menu-popup a:hover {
+    background: #ffe88a;
 }
 
 /* HERO */
 .hero {
-    padding-top: 130px;
+    padding: 140px 20px 80px;
     text-align: center;
-    padding-bottom: 80px;
-}
-
-.hero-content {
-    max-width: 600px;
-    margin: auto;
 }
 
 .logo-hero {
-    width: 130px;
-    height: auto;
-    margin-bottom: 20px;
+    width: 150px;
+    margin-bottom: 15px;
+    border-radius: 12px;
 }
 
-.hero-content h1 {
-    font-size: 35px;
+.hero h1 {
+    font-size: 32px;
     font-weight: 700;
 }
 
-.hero-content h1 span {
-    color: #ffcb05;
+.hero span {
+    color: #ffcc00;
 }
 
-.hero-content p {
+.hero p {
     margin-top: 10px;
-    font-size: 18px;
-    color: #444;
+    color: #555;
+    font-size: 16px;
 }
 
-/* SECTIONS */
+/* SECTION */
 .section {
-    padding: 60px 40px;
-    text-align: center;
+    width: 92%;
+    max-width: 900px;
+    margin: 30px auto;
+    background: #fff;
+    padding: 35px 25px;
+    border-radius: 12px;
+    box-shadow: 0 3px 14px rgba(0,0,0,0.08);
 }
 
 .section h2 {
-    font-size: 28px;
-    margin-bottom: 15px;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 12px;
 }
 
 .section p {
-    max-width: 700px;
-    margin: auto;
-    font-size: 17px;
-    line-height: 1.6;
+    color: #444;
+    line-height: 1.7;
 }
 
-/* BUTTON CONTACT */
+/* BUTTON */
 .btn-wa {
     margin-top: 20px;
-    padding: 14px 24px;
-    background: #00c853;
+    background: #25D366;
     color: white;
+    padding: 13px 20px;
     border: none;
-    cursor: pointer;
     border-radius: 10px;
-    font-size: 18px;
+    font-size: 17px;
+    cursor: pointer;
     font-weight: 600;
+    width: max-content;
 }
 
-/* FOOTER */
-footer {
-    background: #ffcb05;
-    padding: 20px;
-    text-align: center;
+.btn-wa:hover {
+    background: #1ebe5d;
+}
+
+/* BACK PAGE */
+.back-btn {
+    background: #fff;
+    padding: 8px 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    cursor: pointer;
     font-weight: 600;
-    margin-top: 40px;
+}
+.back-btn:hover {
+    background: #f2f2f2;
+}
+
+/* PAGE CONTAINER */
+.page-container {
+    max-width: 900px;
+    margin: 110px auto 40px;
+    background: #fff;
+    padding: 30px 25px;
+    border-radius: 12px;
+    box-shadow: 0 3px 16px rgba(0,0,0,0.1);
+    text-align: center;
 }
